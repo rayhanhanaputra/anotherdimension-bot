@@ -17,7 +17,7 @@ def qr_code_handler(message):
     bot.register_next_step_handler(sent, qrcode)
 
 def qrcode(message):
-    if(len(message)!=10 and messange.isdigit()):
+    if(len(message)!=10 and message.isdigit()):
 	url=pyqrcode.create(message.text)
 	url.png('TICKET-QR-CODE.png',scale=15)
 	bot.send_chat_action(message.chat.id, 'upload_document')
