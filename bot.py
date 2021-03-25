@@ -23,8 +23,7 @@ def qrcode(message):
     bot.send_document(message.chat.id,open('TICKET-QR-CODE.png','rb' ))
 
 
-while True:
-	try:
-		bot.infinity_polling(True)
-	except Exception:
-		time.sleep(1)
+bot.polling()
+
+while True: # Don't end the main thread.
+    pass
