@@ -8,7 +8,7 @@ bot=telebot.TeleBot(token)
 @bot.message_handler(commands=['start'])
 def start_message(msg):
     bot.send_chat_action(msg.chat.id, 'typing')
-    bot.send_message(msg.chat.id,'Selamat datang di Ticket Booth PENTAS SENI 2021 - Another Dimension,\n GUnakan /daftar untuk mendapatkan tiket')
+    bot.send_message(msg.chat.id,'Selamat datang di Ticket Booth PENTAS SENI 2021 - Another Dimension.\n Ketik /daftar untuk mendapatkan tiket sekarang juga!')
 
 @bot.message_handler(commands=['daftar'])
 def qr_code_handler(message):    
@@ -18,9 +18,9 @@ def qr_code_handler(message):
 
 def qrcode(message):
     url=pyqrcode.create(message.text)
-    url.png('qrcode.png',scale=15)
+    url.png('scan-ditempat.png',scale=15)
     bot.send_chat_action(message.chat.id, 'upload_document')
-    bot.send_document(message.chat.id,open('qrcode.png','rb' ))
+    bot.send_document(message.chat.id,open('scan-ditempat.png','rb' ))
 
 
 while True:
