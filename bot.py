@@ -8,9 +8,9 @@ bot=telebot.TeleBot(token)
 @bot.message_handler(commands=['start'])
 def start_message(msg):
     bot.send_chat_action(msg.chat.id, 'typing')
-    bot.send_message(msg.chat.id,'Hey There,\n Use /qr_code to generate QR CODE ')
+    bot.send_message(msg.chat.id,'Selamat datang di Ticket Booth PENTAS SENI 2021 - Another Dimension,\n GUnakan /daftar untuk mendapatkan tiket')
 
-@bot.message_handler(commands=['qr_code'])
+@bot.message_handler(commands=['daftar'])
 def qr_code_handler(message):    
     bot.send_chat_action(message.chat.id, 'typing')
     sent = bot.send_message(message.chat.id, "Masukkan NPM abang/mba: ")
