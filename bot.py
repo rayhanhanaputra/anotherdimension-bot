@@ -22,8 +22,6 @@ def qrcode(message):
     bot.send_chat_action(message.chat.id, 'upload_document')
     bot.send_document(message.chat.id,open('TICKET-QR-CODE.png','rb' ))
 
-
-bot.polling()
-
-while True: # Don't end the main thread.
-    pass
+while True:
+	bot.polling()
+	time.sleep(1)
