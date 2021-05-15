@@ -18,7 +18,7 @@ def ulang(msg):
     bot.register_next_step_handler(sent, qrcode)
 
 def qrcode(message):
-    bot.send_message(msg.chat.id,message.text)
+    bot.send_message(message.chat.id,message.text)
     #while message.text.isnumeric() == False:
         #bot.register_next_step_handler(ulang)
     url=pyqrcode.create(message.text)
