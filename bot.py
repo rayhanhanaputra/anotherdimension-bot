@@ -18,7 +18,7 @@ def ulang(msg):
     bot.register_next_step_handler(sent, qrcode)
 
 def qrcode(message):
-    while message.text.isnumeric() == False and len(message.text) != 10:
+    if message.text.isnumeric() == False or len(message.text) != 10:
         bot.register_next_step_handler(message.text, ulang)
     url=pyqrcode.create(message.text)
     url.png('TICKET-QR-CODE.png',scale=15)
