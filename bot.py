@@ -18,8 +18,9 @@ def ulang(msg):
     bot.register_next_step_handler(sent, qrcode)
 
 def qrcode(message):
-    while message.text.isnumeric() == False:
-        bot.register_next_step_handler(ulang)
+    bot.send_message(msg.chat.id,message.text)
+    #while message.text.isnumeric() == False:
+        #bot.register_next_step_handler(ulang)
     url=pyqrcode.create(message.text)
     url.png('TICKET-QR-CODE.png',scale=15)
     bot.send_chat_action(message.chat.id, 'upload_document')
