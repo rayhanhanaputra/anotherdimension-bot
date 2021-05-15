@@ -10,8 +10,8 @@ def start_message(msg):
     bot.send_chat_action(msg.chat.id, 'typing')
     bot.send_message(msg.chat.id,'Selamat datang di Ticket Booth PENTAS SENI 2021 - Another Dimension.')
     sent = bot.send_message(msg.chat.id,'Masukkan NPM Abang/Mba untuk mendapatkan tiket!')
-    while sent.isnumeric() == False:
-        sent = bot.send_message(msg.chat.id,'Mohon izin untuk memasukkan NPM dengan benar...')
+    bot.send_message(msg.chat.id,sent)
+
     bot.register_next_step_handler(sent, qrcode)
 
 def qrcode(message):
