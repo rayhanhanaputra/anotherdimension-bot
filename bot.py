@@ -24,6 +24,8 @@ def qrcode(message):
     url.png('TICKET-QR-CODE.png',scale=15)
     bot.send_chat_action(message.chat.id, 'upload_document')
     bot.send_document(message.chat.id,open('TICKET-QR-CODE.png','rb' ))
+    bot.send_message(message.chat.id,'Tunjukkan QR Code ini saat melakukan absensi!\nTerima kasih Bang/Mba')
+    bot.send_message(message.chat.id,'Ketik /start untuk membuat tiket lagi')
     
 while True:
 	bot.polling()
