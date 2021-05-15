@@ -8,12 +8,10 @@ bot=telebot.TeleBot(token)
 @bot.message_handler(commands=['start'])
 def start_message(msg):
     bot.send_chat_action(msg.chat.id, 'typing')
-    bot.send_message(msg.chat.id,'Selamat datang di Ticket Booth PENTAS SENI 2021 - Another Dimension.\nKetik /daftar untuk mendapatkan tiket sekarang juga!')
-
-@bot.message_handler(commands=['daftar'])
-def qr_code_handler(message):    
-    bot.send_chat_action(message.chat.id, 'typing')
-    sent = bot.send_message(message.chat.id, "Masukkan NPM abang/mba: ")
+    bot.send_message(msg.chat.id,'Selamat datang di Ticket Booth PENTAS SENI 2021 - Another Dimension.')
+    sent = bot.send_message(msg.chat.id,'Masukkan NPM Abang/Mba untuk mendapatkan tiket!')
+    while sent.isnumeric() == false:
+        sent = bot.send_message(msg.chat.id,'Mohon izin untuk memasukkan NPM dengan benar...')
     bot.register_next_step_handler(sent, qrcode)
 
 def qrcode(message):
