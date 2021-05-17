@@ -40,7 +40,7 @@ def qrcode(message):
     url=pyqrcode.create(message.text)
     url.png('TICKET-QR-CODE.png',scale=15)
     bot.send_chat_action(message.chat.id, 'upload_document')
-    pesan = "TICKET-QR-CODE-"+message.text+".png"
+    pesan = "TICKET-QR-CODE.png"
     bot.send_document(message.chat.id,open(pesan,'rb' ))
     bot.send_message(message.chat.id,'Tunjukkan QR Code ini saat melakukan absensi!\nTerima kasih Bang/Mba')
     bot.send_message(message.chat.id,'Ketik /start untuk membuat tiket lagi')
