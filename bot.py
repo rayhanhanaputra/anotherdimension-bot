@@ -1,9 +1,22 @@
 import telebot
 import pyqrcode
 import time
+import csv
 
 token="1776988419:AAF4xYEKQUcupQ3J7IKCqxyARF75H5PfpO0"
 bot=telebot.TeleBot(token)
+
+contacts = []
+
+with open('data.csv') as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=",")
+    for row in csv_reader:
+        hasil = ""
+        for i in range(len(row)):
+            if(row[i]>='0' and row[i]<='9'):
+                hasil += row[i]
+        contacts.append(hasil)
+
 
 @bot.message_handler(commands=['start'])
 def start_message(msg):
@@ -18,12 +31,16 @@ def ulang(msg):
     bot.register_next_step_handler(yow, qrcode)
 
 def qrcode(message):
-    if message.text.isnumeric() == False or len(message.text) != 10:
+    kebenaran = 0
+    for j in range(len(contacts)):
+        if(contacts[j]==message.text):
+            kebenaran=1
+    if kebenaran==0:
         return ulang(message)
     url=pyqrcode.create(message.text)
     url.png('TICKET-QR-CODE.png',scale=15)
     bot.send_chat_action(message.chat.id, 'upload_document')
-    bot.send_document(message.chat.id,open('TICKET-QR-CODE.png','rb' ))
+    bot.send_document(message.chat.id,open('TICKET-QR-CODE-'+message.text+'.png','rb' ))
     bot.send_message(message.chat.id,'Tunjukkan QR Code ini saat melakukan absensi!\nTerima kasih Bang/Mba')
     bot.send_message(message.chat.id,'Ketik /start untuk membuat tiket lagi')
     
