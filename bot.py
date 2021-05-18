@@ -32,15 +32,19 @@ def ulang(msg):
     bot.register_next_step_handler(yow, qrcode)
 
 def qrcode(message):
+    c = message.text
+    pesan = "p"+c[0:2]+"e"+c[2:4]+"n"+c[4:6]+"s"+c[6:8]+"i"+c[8:10]
+    enkrip_obj = hashlib.sha512(pesan.encode())
+    enkrip = enkrip_obj.hexdigest()
     kebenaran = 0
     for j in range(len(contacts)):
-        if(contacts[j]==message.text):
+        if(contacts[j]==enkrip):
             kebenaran=1
     if kebenaran==0:
         return ulang(message)
-    hash_object = hashlib.sha512(message.text.encode())
+    hash_object = hashlib.sha256(message.text.encode())
     hashnya = hash_object.hexdigest()
-    url=pyqrcode.create(message.text)
+    url=pyqrcode.create(enkrip+"flag{Th3_fl46_15_n0t_h3r3}")
     url.png(hashnya+'.png',scale=15)
     bot.send_chat_action(message.chat.id, 'upload_document')
     bot.send_message(message.chat.id,'Selamat! Abang/Mba telah berhasil melakukan registrasi pada Pentas Seni Sembagi Arutala.\n Mohon izin untuk mengirimkan tiket Abang/Mba...')
