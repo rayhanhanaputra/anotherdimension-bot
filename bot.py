@@ -33,8 +33,22 @@ def ulang(msg):
 
 def qrcode(message):
     c = message.text
-    pesan = "p"+c[0:2]+"e"+c[2:4]+"n"+c[4:6]+"s"+c[6:8]+"i"+c[8:10]
-    enkrip_obj = hashlib.sha512(pesan.encode())
+    morp = "p"
+    morp += c[0]
+    morp += c[1]
+    morp += 'e'
+    morp += c[2]
+    morp += c[3]
+    morp += 'n'
+    morp += c[4]
+    morp += c[5]
+    morp += 's'
+    morp += c[6]
+    morp += c[7]
+    morp += 'i'
+    morp += c[8]
+    morp += c[9]
+    enkrip_obj = hashlib.sha512(morp.encode())
     enkrip = enkrip_obj.hexdigest()
     kebenaran = 0
     for j in range(len(contacts)):
