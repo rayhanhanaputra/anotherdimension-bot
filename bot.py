@@ -48,7 +48,7 @@ def qrcode(message):
     morp += 'i'
     morp += c[8]
     morp += c[9]
-    enkrip_obj = hashlib.sha512(morp.encode())
+    enkrip_obj = hashlib.sha256(morp.encode())
     enkrip = enkrip_obj.hexdigest()
     kebenaran = 0
     for j in range(len(contacts)):
@@ -56,9 +56,9 @@ def qrcode(message):
             kebenaran=1
     if kebenaran==0:
         return ulang(message)
-    hash_object = hashlib.sha256(message.text.encode())
+    hash_object = hashlib.sha224(message.text.encode())
     hashnya = hash_object.hexdigest()
-    url=pyqrcode.create(enkrip+"flag{Th3_fl46_15_n0t_h3r3}")
+    url=pyqrcode.create(enkrip+"_can_you_beat_me?\nflag{Th3_fl46_15_n0t_h3r3}")
     url.png(hashnya+'.png',scale=15)
     bot.send_chat_action(message.chat.id, 'upload_document')
     bot.send_message(message.chat.id,'Selamat! Abang/Mba telah berhasil melakukan registrasi pada Pentas Seni Sembagi Arutala.\n Mohon izin untuk mengirimkan tiket Abang/Mba...')
