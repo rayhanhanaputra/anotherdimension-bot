@@ -14,7 +14,7 @@ with open('data.csv') as csv_file:
     for row in csv_reader:
         hasil = ""
         for i in range(len(row)):
-            if(row[i]>='0' and row[i]<='9'):
+            if(row[i]!="'"):
                 hasil += row[i]
         contacts.append(hasil)
 
