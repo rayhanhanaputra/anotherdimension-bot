@@ -43,8 +43,9 @@ def qrcode(message):
     url=pyqrcode.create(message.text)
     url.png(hashnya+'.png',scale=15)
     bot.send_chat_action(message.chat.id, 'upload_document')
+    bot.send_message(message.chat.id,'Selamat! Abang/Mba telah berhasil melakukan registrasi pada Pentas Seni Sembagi Arutala.\n Mohon izin untuk mengirimkan tiket Abang/Mba...')
     bot.send_document(message.chat.id,open(hashnya+'.png','rb'))
-    bot.send_message(message.chat.id,'Tunjukkan QR Code ini saat melakukan absensi!\nTerima kasih Bang/Mba')
+    bot.send_message(message.chat.id,'Tunjukkan QR Code ini saat melakukan absensi!\nTerima kasih Abang/Mba')
     bot.send_message(message.chat.id,'Ketik /start untuk membuat tiket lagi')
     
 while True:
