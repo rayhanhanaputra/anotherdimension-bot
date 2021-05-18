@@ -23,12 +23,12 @@ with open('data.csv') as csv_file:
 def start_message(msg):
     bot.send_chat_action(msg.chat.id, 'typing')
     bot.send_message(msg.chat.id,'Selamat datang di Bot Telegram Ticket Generator PENTAS SENI 2021 SEMBAGI ARUTALA Karya Luminous!')
-    sent = bot.send_message(msg.chat.id,'Masukkan NPM Abang/Mba untuk mendapatkan tiket sekarang juga!')
+    sent = bot.send_message(msg.chat.id,'Ketik NPM Abang/Mba di kolom chat untuk mendapatkan tiket sekarang juga!')
     bot.register_next_step_handler(sent, qrcode)
 	
 def ulang(msg):
     bot.send_chat_action(msg.chat.id, 'typing')
-    yow = bot.send_message(msg.chat.id,'Maaf, kami tidak dapat mengenali NPM tersebut. mohon izin untuk memasukkan NPM Abang/Mba kembali dengan benar...')
+    yow = bot.send_message(msg.chat.id,'Maaf, kami tidak dapat mengenali NPM tersebut. Mohon izin untuk memasukkan NPM Abang/Mba kembali dengan benar...')
     bot.register_next_step_handler(yow, qrcode)
 
 def qrcode(message):
