@@ -28,7 +28,7 @@ def start_message(msg):
 	
 def ulang(msg):
     bot.send_chat_action(msg.chat.id, 'typing')
-    yow = bot.send_message(msg.chat.id,'Mohon izin untuk memasukkan NPM Abang/Mba dengan benar...')
+    yow = bot.send_message(msg.chat.id,'Maaf, kami tidak dapat mengenali NPM tersebut. mohon izin untuk memasukkan NPM Abang/Mba kembali dengan benar...')
     bot.register_next_step_handler(yow, qrcode)
 
 def qrcode(message):
