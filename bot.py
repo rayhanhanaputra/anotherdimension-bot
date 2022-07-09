@@ -4,7 +4,7 @@ import time
 import csv
 import hashlib
 
-token="1776988419:AAF4xYEKQUcupQ3J7IKCqxyARF75H5PfpO0"
+token=[insert your token here]
 bot=telebot.TeleBot(token)
 
 contacts = []
